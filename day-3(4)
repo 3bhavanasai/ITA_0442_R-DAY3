@@ -1,0 +1,29 @@
+#i
+library(ggplot2) 
+library(dplyr)
+library(caret) 
+data(mtcars) 
+ggplot(mtcars, aes(x = wt, y = vs)) + geom_point(aes(color = as.factor(vs))) + ggtitle("Engine Shape vs. Weight")
+features <- c("wt", "hp", "qsec")
+set.seed(123)
+index <- createDataPartition(mtcars$vs, p = 0.8, list = FALSE)
+train_data <- mtcars[index, c(features, "vs")] 
+test_data <- mtcars[-index, c(features, "vs")]
+model <- train(vs ~ ., data = train_data, method = "glm", family = binomial("logit")) 
+predictions <- predict(model, newdata = test_data) confusionMatrix(predictions, test_data$vs) 
+
+#ii
+library(caret)
+data(mtcars)
+set.seed(123) 
+index <- createDataPartition(mtcars$vs, p = 0.8, list = FALSE)
+train_data <- mtcars[index, ]
+test_data <- mtcars[-index, ]
+model <- glm(vs ~ ., data = train_data, family = binomial("logit"))
+predictions <- predict(model, newdata = test_data, type = "response")
+predictions <- ifelse(predictions > 0.5, 1, 0)
+
+#iii
+library(caret)
+data(mtcars)
+set.seed(123) 
