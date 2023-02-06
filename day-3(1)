@@ -1,0 +1,25 @@
+#i
+Fibonacci <- numeric(10)
+Fibonacci[1] <- Fibonacci[2] <- 1
+for (i in 3:10) Fibonacci[i] <- Fibonacci[i - 2] + Fibonacci[i - 1]
+print("First 10 Fibonacci numbers:")
+print(Fibonacci)
+sum=0
+n=5
+for(i in 1:n){
+  sum=sum+i
+
+#ii
+sum=0
+n=5
+for(i in 1:n){
+  sum=sum+i
+}
+print(sum)
+
+#iii
+b=1:10
+for(i in b){
+  a=i*i
+  print(list(i))
+}
