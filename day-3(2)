@@ -1,0 +1,18 @@
+#i
+data=mtcars
+dim(data)
+
+#ii
+data=mtcars
+summary(data)
+
+#iii
+c=sapply(mtcars,function(x) class(x))
+print(c)
+
+#iv
+print(aggregate(mtcars$wt,list(mtcars$vs),mean))
+
+#v
+print(aggregate(mtcars$wt,list(mtcars$vs),max))
+print(aggregate(mtcars$wt,list(mtcars$vs),min))
