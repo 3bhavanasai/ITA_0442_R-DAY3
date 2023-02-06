@@ -1,0 +1,15 @@
+#i
+library(ggplot2)
+ggplot(mtcars,aes(x=wt,y=disp,shape=factor(vs),col=factor(vs)))+geom_point()
+
+#ii
+library(ggplot2)
+ggplot(mtcars,aes(x=hp,y=mpg,shape=factor(vs),col=factor(vs)))+geom_point()+facet_wrap(.~cyl)
+
+#iii
+hist(mtcars$hp,breaks=seq(from=50,to=350,by=5))
+
+#iv
+ggplot(mtcars, aes(x = hp, y = mpg, color = factor(cyl))) + geom_point() 
++ facet_wrap(~ vs) 
++ ggtitle("Horsepower and Mileage Scatter Plot by Engine Shape and Cylinder Size") + xlab("Horsepower (hp)") + ylab("Mileage (mpg)")
